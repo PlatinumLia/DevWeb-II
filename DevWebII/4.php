@@ -10,10 +10,10 @@ $diferenca=$primeiro-$segundo;
 $inversoSegundo=$segundo*(1/$segundo) . "/" . $segundo;
 
 echo "Cálculos com os nº 5 e 4:" . "<br><br>";
-echo $elevado . "<br>";
-echo $multiplicacao . "<br>";
-echo $inversoPrimeiro . "<br>";
-echo $somaMetadeSegundo . "<br>";
-echo $diferenca . "<br>";
-echo $inversoSegundo . "<br>";
+echo "Primeiro elevado ao segundo: " . $elevado . "<br>";
+echo "Multiplicação: " . $multiplicacao . "<br>";
+echo "Inverso do primeiro: " . $inversoPrimeiro . "<br>";
+echo "Primeiro somado a metade do segundo: " . $somaMetadeSegundo . "<br>";
+echo "Diferença: " . $diferenca . "<br>";
+echo "Inverso do segundo: " . $inversoSegundo . "<br>";
 ?>
