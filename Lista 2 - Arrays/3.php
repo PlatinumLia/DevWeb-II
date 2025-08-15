@@ -7,14 +7,14 @@ $locaisTuristicos = array("Itaipu", "Cataratas", "Parque das aves");
 $listaTudo = array($flores, $frutas, $cidades, $locaisTuristicos);
 
 echo "<table border = 1>";
-echo "<tr>";
-echo "<th>" . "Flores" . "</th>";
-echo "<th>" . "Frutas" . "</th>";
-echo "<th>" . "Cidades" . "</th>";
-echo "<th>" . "Locais Turísticos" . "</th>";
-echo "</tr>";
-foreach(){
-    
+foreach($listaTudo as $lT){
+    echo "<tr>
+    <td>$lT[0]</td>
+    <td>$lT[1]</td>
+    <td>$lT[2]</td> 
+    <td>$lT[3]</td>
+    </tr>";    
 }
+echo "</table>";
 
 ?>
