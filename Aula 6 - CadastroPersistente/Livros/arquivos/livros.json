@@ -1,14 +1,9 @@
 [
     {
-        "id": "68a90bbac7312",
-        "titulo": "A Metamorfose",
-        "genero": "F",
-        "paginas": "115"
-    },
-    {
-        "id": "68a90ffc71e6a",
+        "id": "68b227deb0c10",
         "titulo": "Verity",
         "genero": "R",
-        "paginas": "320"
+        "paginas": "320",
+        "autor": "Collen Hover"
     }
 ]
