@@ -1,0 +1,74 @@
+[
+    {
+        "id": "68c0bf55c32ac",
+        "nome": "Bleach",
+        "episodio": "366",
+        "estudio": "Pierrot",
+        "autor": "Tite Kubo",
+        "genero": "A"
+    },
+    {
+        "id": "68c0bf97252c9",
+        "nome": "Black Clover",
+        "episodio": "170",
+        "estudio": "Pierrot",
+        "autor": "Yuki Tabata",
+        "genero": "A"
+    },
+    {
+        "id": "68c215e5bda66",
+        "nome": "Mob Psycho 100",
+        "episodio": "12",
+        "estudio": "Bones",
+        "autor": "ONE",
+        "genero": "C"
+    },
+    {
+        "id": "68c21655c7770",
+        "nome": "Blue Lock",
+        "episodio": "24",
+        "estudio": "8bit",
+        "autor": "Muneyuki Kaneshiro",
+        "genero": "E"
+    },
+    {
+        "id": "68c216a850f0a",
+        "nome": "Gachiakuta",
+        "episodio": "24",
+        "estudio": "Bones Film",
+        "autor": "Kei Urana",
+        "genero": "F"
+    },
+    {
+        "id": "68c2175470df2",
+        "nome": "Panty & Stocking With Garterbelt",
+        "episodio": "13",
+        "estudio": "Gainax",
+        "autor": "Kadokawa Shoten",
+        "genero": "C"
+    },
+    {
+        "id": "68c217abdca64",
+        "nome": "Sono Bisque Doll Wa Koi Wo Suru",
+        "episodio": "12",
+        "estudio": "CloverWorks",
+        "autor": "Shinichi Fukuda",
+        "genero": "R"
+    },
+    {
+        "id": "68c21829198c3",
+        "nome": "BlackLagoon",
+        "episodio": "12",
+        "estudio": "MadHouse",
+        "autor": "Rei Hiroe",
+        "genero": "A"
+    },
+    {
+        "id": "68c218765fc74",
+        "nome": "Hunter x Hunter (2011)",
+        "episodio": "148",
+        "estudio": "MadHouse",
+        "autor": "Yoshihiro Togashi",
+        "genero": "F"
+    }
+]
