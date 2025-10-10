@@ -4,22 +4,23 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 //incluindo o arquivo que permite a conexão
-include_once("connectionP.php");
+include_once("ConnectionP.php");
 
 //obtendo a conexão com o banco
-$connect = ConnectionP::getConnection();
+$conn = ConnectionP::getConnection();
+print_r($conn);
 
 //listar os dados da tabela
 $sql = "SELECT * FROM produtos";
-$stmInstruct = $connect -> prepare($sql); //prepara a instrução
-$stmInstruct -> execute(); //executa a instrução
+$stm = $connect -> prepare($sql); //prepara a instrução
+$stm -> execute(); //executa a instrução
 
 //armazenando os resultados
-$dados = $stmInstruct -> fetchAll();
+$dados = $stm -> fetchAll();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,6 +39,15 @@ $dados = $stmInstruct -> fetchAll();
             <td>Unidade de Medida</td>
             <td>Excluir</td>
         </tr>
+
+        <?php foreach($dados as $d) : ?>
+            <tr>
+                <td> <?= $d['id']?> </td>
+                <td> <?= $d['descricao']?> </td>
+                <td> <?= $d['un_medida']?> </td>
+                <td> <a href="excluirProduto.php?id=<?= $d['id']?>" onclick="return confirm('Deseja mesmo excluir?')">Excluir</a> </td>
+            </tr>
+        <?php endforeach; ?>
     </table>
 </body>
 </html>
