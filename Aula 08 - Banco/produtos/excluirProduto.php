@@ -3,7 +3,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-include_once("ConnectionP.php");
+include_once("Connection.php");
 
 //pegando o id para excluir
 $excId = 0;
@@ -19,8 +19,8 @@ if($excId <= 0){
 
 //executando o SQL para excluir o produto
 $conn = ConnectionP::getConnection();
-$sql = "DELETE FROM produtos WHERE = id = ?";
-$stm = $connect -> prepare($sql);
+$sql = "DELETE FROM produtos WHERE id = ?";
+$stm = $conn -> prepare($sql);
 $stm -> execute(array($excId));
 
 //voltando para a pág. inicial

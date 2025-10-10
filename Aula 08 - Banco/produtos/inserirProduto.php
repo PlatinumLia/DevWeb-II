@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 //incluindo o arquivo que permite a conexão
-include_once("ConnectionP.php");
+include_once("Connection.php");
 
 if(!isset($_GET['descricao']) || !isset($_GET['un_medida']) ){
     echo "Insira os parâmetros [descricao] e [un_medida]" . "<br>";
@@ -17,7 +17,7 @@ $un_medida = $_GET['un_medida'];
 
 //inserindo produto no banco de dados
 $conn = ConnectionP::getConnection();
-$sql = "INSERT INTO produtos (? , ?) VALUES (?, ?)";
+$sql = "INSERT INTO produtos (descricao , un_medida) VALUES (?, ?)";
 $stm = $conn -> prepare($sql);
 $stm -> execute(array($descricao, $un_medida));
 
