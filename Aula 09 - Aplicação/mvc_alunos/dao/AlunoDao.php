@@ -44,5 +44,26 @@ class AlunoDao{
         }
         return $alunos;
     }
+
+    //método para inserir um aluno no sql
+    public function insert(Aluno $aluno){
+        try{ //tenta executar os comandos       
+            $sql = "INSERT INTO alunos (nome, idade, estrangeiro, id_curso) VALUES(?, ?, ?, ?)";
+            $stm = $this->conn->prepare($sql);
+            $stm -> execute(array($aluno->getNome(), $aluno->getIdade(), $aluno->getEstrangeiro(), $aluno->getCurso()->getId()));
+        }catch(PDOException $e){ //caso não funcione "captura" o erro e o mostra na página
+            die($e->getMessage());
+        }
+    }
+
+    public function exclude(int $id){
+        try{ //tenta executar os comandos
+            $sql = "DELETE FROM alunos WHERE id=?";
+            $stm = $this->conn->prepare($sql);
+            $stm -> execute(array($id));
+        }catch(PDOException $e){ //caso não funcione
+            die($e->getMessage()); //mostra o erro na página
+        }
+    }
 }
 ?>

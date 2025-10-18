@@ -14,5 +14,15 @@ class AlunoController{
     public function listar(){
         return $this->alunoDao->list();    
     }
+
+    //método para inserir no banco
+    public function inserir(Aluno $aluno){
+        $this->alunoDao->insert($aluno); //chamando o Dao já criado
+    }
+
+    //método para deletar um registro do banco
+    public function excluir(int $id){
+        $this->alunoDao->exclude($id); //chamando o Dao já criado
+    }
 }
 ?>

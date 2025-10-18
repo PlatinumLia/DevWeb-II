@@ -1,6 +1,13 @@
 <?php
+//carregar a lista de cursos
+include_once(__DIR__ . "/../../controller/CursoController.php");
+$cursoCont = new CursoController(); //objeto para carregar o "CursoController" 
+$cursos = $cursoCont->listar(); //chamando o método listar
+//print_r($cursos); //confirmando o que está gravado na variável "$cursos"
+
 include_once(__DIR__ . "/../include/header.php");
 ?>
+
 <h3>Inserir aluno</h3>
 
 <form method="POST" action="">
@@ -30,6 +37,12 @@ include_once(__DIR__ . "/../include/header.php");
         <label for="selCurso">Curso:</label>
         <select name="curso" id="selCurso">
             <option value="">----Selecione----</option>
+            <?php foreach($cursos as $c): ?>
+                <option value="<?= $c->getId(); ?>">
+                    <?= $c->getNomeTurma() ?>
+                </option>    
+            <?php endforeach; ?>
+            
         </select>
     </div>
 
