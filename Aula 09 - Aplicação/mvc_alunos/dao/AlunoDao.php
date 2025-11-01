@@ -14,14 +14,31 @@ class AlunoDao{
     //método
     public function list(){
         $sql = "SELECT a.*, c.nome nome_curso, c.turno turno_curso 
-        FROM alunos a
-        JOIN cursos c ON (c.id = a.id_curso)";
+                FROM alunos a
+                JOIN cursos c ON (c.id = a.id_curso)";
         
         $stm = $this->conn->prepare($sql);
         $stm -> execute();
         $result = $stm->fetchAll();
 
         return $this->map($result); //passando o $result para o map()
+    }
+
+    public function findById(int $id){
+        $sql = "SELECT a.*, c.nome nome_curso, c.turno turno_curso 
+                FROM alunos a
+                JOIN cursos c ON (c.id = a.id_curso)
+                WHERE a.id = ?"; //filtrando por id
+        
+        $stm = $this->conn->prepare($sql);
+        $stm -> execute([$id]);
+        $result = $stm->fetchAll();
+
+        $alunos = $this->map($result);    
+        if(count($alunos) == 1){ //verificando se está obtendo o objeto Aluno
+            return $alunos[0]; //retorna um objeto Aluno, caso exista
+        }
+        return NULL; //caso não haja o objeto Aluno, retorna NULL
     }
 
     private function map(array $result){ //conversão de array assoc. para objeto
@@ -54,6 +71,23 @@ class AlunoDao{
         }catch(PDOException $e){ //caso não funcione "captura" o erro e o mostra na página
             die($e->getMessage());
         }
+    }
+
+    public function update(Aluno $aluno) {
+        try{
+            $sql = "UPDATE alunos 
+                    SET nome = ?, idade = ?, 
+                        estrangeiro = ?, id_curso = ? 
+                    WHERE id = ?";
+            $stm = $this->conn->prepare($sql);
+            $stm->execute(array($aluno->getNome(), 
+                                $aluno->getIdade(),
+                                $aluno->getEstrangeiro(), 
+                                $aluno->getCurso()->getId(),
+                                $aluno->getId()));
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }                   
     }
 
     public function exclude(int $id){
