@@ -1,14 +1,14 @@
 <?php
-include_once(__DIR__ . "/../../controller/AbsorbController.php");
 include_once(__DIR__ . "/../../controller/ArcanaController.php");
+include_once(__DIR__ . "/../../controller/TiposController.php");
 include_once(__DIR__ . "/../../util/config.php");
-
-$absCont = new AbsorbController(); //carregando o objeto "AbsorbController"
-$absorbs = $absCont->listar();
 
 $arcCont = new ArcanaController();
 $arcanas = $arcCont->listar();
-//print_r($absorbs);
+
+$tiposCont = new TiposController();
+$tipos = $tiposCont->listar();
+//print_r($tipos);
 ?>
 
 <h3>Demônio</h3>
@@ -23,28 +23,32 @@ $arcanas = $arcCont->listar();
         <div>
             <label for="">Preco</label>
             <input type="text" name="preco" placeholder="Preço do demônio">
-            <select name="" id="">---- SELECIONE ----</select>
-            <select name="" id=""></select>
         </div>
 
         <div>
             <label for="">Arcana</label>
             <select name="arcana" id="">
                 <option value="">---- SELECIONE ----</option>
-                <?php foreach($arcanas as $arc) : ?>
-                    <option value="<?=  $arc->getId(); ?>"
-                    
-                    ><!-- fechamento da tag <option> -->
+
+                <?php foreach ($arcanas as $arc) : ?>
+                    <option value="<?= $arc->getId(); ?>">
                         <?= $arc->getCarta() ?>
                     </option>
-                <?php endforeach;?>
+                <?php endforeach; ?>
+
             </select>
         </div>
         <div>
             <label for="">Fraqueza</label>
             <select name="fraqueza" id="">
                 <option value="">---- SELECIONE ----</option>
-                <option value=""></option>
+
+                <?php foreach ($tipos as $t) : ?>
+                    <option value="<?= $t->getId(); ?>">
+                        <?= $t->getTipo() ?>
+                    </option>
+                <?php endforeach; ?>
+
             </select>
         </div>
 
@@ -52,7 +56,13 @@ $arcanas = $arcCont->listar();
             <label for="">Resistência</label>
             <select name="resistencia" id="">
                 <option value="">---- SELECIONE ----</option>
-                <option value=""></option>
+
+                <?php foreach ($tipos as $t) : ?>
+                    <option value="<?= $t->getId(); ?>">
+                        <?= $t->getTipo() ?>
+                    </option>
+                <?php endforeach; ?>
+
             </select>
         </div>
 
@@ -60,12 +70,13 @@ $arcanas = $arcCont->listar();
             <label for="">Absorção</label>
             <select name="absorcao" id="">
                 <option value="">---- SELECIONE ----</option>
-                <?php foreach($absorbs as $abs) : ?>
-                    <option value="<?=  $abs->getId(); ?>"
-                    > <!-- fechamento da tag <option>-->
-                        <?=  $abs->getTipoAbs() ?>
+
+                <?php foreach ($tipos as $t) : ?>
+                    <option value="<?= $t->getId(); ?>">
+                        <?= $t->getTipo() ?>
                     </option>
                 <?php endforeach; ?>
+
             </select>
         </div>
 
@@ -73,14 +84,20 @@ $arcanas = $arcCont->listar();
             <label for="">Nulificação</label>
             <select name="nulificacao" id="">
                 <option value="">---- SELECIONE ----</option>
-                <option value=""></option>
+
+                <?php foreach ($tipos as $t) : ?>
+                    <option value="<?= $t->getId(); ?>">
+                        <?= $t->getTipo() ?>
+                    </option>
+                <?php endforeach; ?>
+
             </select>
         </div>
-        
+
         <div>
             <a href="#">Gravar</a>
             <a href="#">Voltar</a>
         </div>
     </form>
-    
+
 </div>

@@ -1,8 +1,7 @@
 <?php
-include_once(__DIR__ . "/../util/Connection.php");
-include_once(__DIR__ . "/../model/Arcana.php");
+include_once(__DIR__ . "/../model/Tipos.php");
 
-class ArcanaDao{
+class TiposDao{
     private PDO $conn; //faz a conexão com o banco
 
     public function __construct(){ //conectando ao banco
@@ -10,7 +9,7 @@ class ArcanaDao{
     }
 
     public function list(){ //listar as arcanas
-        $sql = "SELECT * FROM arcana ORDER BY id"; //selecionando a tabela e dados no banco
+        $sql = "SELECT * FROM tipos ORDER BY id"; //selecionando a tabela e dados no banco
         $stm = $this->conn->prepare($sql); //preparando o sql para ser executado
         $stm->execute(); //executando
         $result = $stm->fetchAll();
@@ -19,17 +18,15 @@ class ArcanaDao{
     }
 
     private function map(array $result){
-        $arcanas = array(); //armazenar os objetos no array
+        $tipos = array(); //armazenar os objetos no array
 
         foreach($result as $r){ //precorrer o array "result"
-            $arcana = new Arcana();
-            $arcana->setId($r['id']);
-            $arcana->setNomeArc($r['nome']);
-            $arcana->setNumArcana($r['numero_arcana']);
-
-            array_push($arcanas, $arcana); //adicionando o objeto no array
+            $tipo = new Tipos();
+            $tipo->setId($r['id']);
+            $tipo->setTipo($r['tipo']);
+            array_push($tipos, $tipo); //adicionando o objeto no array
         }
-        return $arcanas;
+        return $tipos;
     }
 }
 ?>

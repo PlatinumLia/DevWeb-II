@@ -1,24 +1,17 @@
 <?php
-include_once(__DIR__ . "/Absorb.php");
 include_once(__DIR__ . "/Arcana.php");
-include_once(__DIR__ . "/Nullifies.php");
-include_once(__DIR__ . "/Preco.php");
-include_once(__DIR__ . "/Resistence.php");
-include_once(__DIR__ . "/Weakness.php");
+include_once(__DIR__ . "/Tipos.php");
 
 class Demon{
     //atributos
     private ?int $id;
     private ?string $nome;
-    private ?Absorb $absorb;
+    private ?float $preco;
     private ?Arcana $arcana;
-    private ?Nullifies $null;
-    private ?Preco $preco;
-    private ?Resistence $res;
-    private ?Weakness $weakness;
+    private ?Tipos $tipos;
 
-//Getters e Setters
-    /* Get e Set do id */
+    //Getters e Setters
+    /* Get e Set do id*/
     public function getId(): ?int
     {
         return $this->id;
@@ -29,7 +22,7 @@ class Demon{
         return $this;
     }
 
-    /* Get e Set do nome */
+    /* Get e Set do atributo "nome" */
     public function getNome(): ?string
     {
         return $this->nome;
@@ -40,18 +33,18 @@ class Demon{
         return $this;
     }
 
-    /* Get e Set da absorção*/
-    public function getAbsorb(): ?Absorb
+    /* Get e Set do atributo "preco" */
+    public function getPreco(): ?float
     {
-        return $this->absorb;
+        return $this->preco;
     }
-    public function setAbsorb(?Absorb $absorb): self
+    public function setPreco(?float $preco): self
     {
-        $this->absorb = $absorb;
+        $this->preco = $preco;
         return $this;
     }
 
-    /* Get e Set da Arcana */
+    /* Get e Set da classe Arcana */
     public function getArcana(): ?Arcana
     {
         return $this->arcana;
@@ -62,47 +55,14 @@ class Demon{
         return $this;
     }
 
-    /* Get e Set da nulificação */
-    public function getNull(): ?Nullifies
+    /* Get e Set da classe Tipos */
+    public function getTipos(): ?Tipos
     {
-        return $this->null;
+        return $this->tipos;
     }
-    public function setNull(?Nullifies $null): self
+    public function setTipos(?Tipos $tipos): self
     {
-        $this->null = $null;
-        return $this;
-    }
-
-    /* Get e Set do Preço*/
-    public function getPreco(): ?Preco
-    {
-        return $this->preco;
-    }
-    public function setPreco(?Preco $preco): self
-    {
-        $this->preco = $preco;
-        return $this;
-    }
-
-    /* Get e Set da resistência */
-    public function getRes(): ?Resistence
-    {
-        return $this->res;
-    }
-    public function setRes(?Resistence $res): self
-    {
-        $this->res = $res;
-        return $this;
-    }
-
-    /* Get e Set da fraqueza */
-    public function getWeakness(): ?Weakness
-    {
-        return $this->weakness;
-    }
-    public function setWeakness(?Weakness $weakness): self
-    {
-        $this->weakness = $weakness;
+        $this->tipos = $tipos;
         return $this;
     }
 } 
