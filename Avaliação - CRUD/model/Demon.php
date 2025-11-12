@@ -2,6 +2,7 @@
 include_once(__DIR__ . "/Absorb.php");
 include_once(__DIR__ . "/Arcana.php");
 include_once(__DIR__ . "/Nullifies.php");
+include_once(__DIR__ . "/Preco.php");
 include_once(__DIR__ . "/Resistence.php");
 include_once(__DIR__ . "/Weakness.php");
 
@@ -12,10 +13,11 @@ class Demon{
     private ?Absorb $absorb;
     private ?Arcana $arcana;
     private ?Nullifies $null;
+    private ?Preco $preco;
     private ?Resistence $res;
     private ?Weakness $weakness;
 
-    //Getters e Setters
+//Getters e Setters
     /* Get e Set do id */
     public function getId(): ?int
     {
@@ -68,6 +70,17 @@ class Demon{
     public function setNull(?Nullifies $null): self
     {
         $this->null = $null;
+        return $this;
+    }
+
+    /* Get e Set do Preço*/
+    public function getPreco(): ?Preco
+    {
+        return $this->preco;
+    }
+    public function setPreco(?Preco $preco): self
+    {
+        $this->preco = $preco;
         return $this;
     }
 

@@ -5,7 +5,7 @@
 <h3>Demon Compendium</h3>
 
 <div>
-    <a href="#">Inserir</a>
+    <a href="form.php">Inserir</a>
 </div>
 
 <table>
