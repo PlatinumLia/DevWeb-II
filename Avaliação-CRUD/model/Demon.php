@@ -7,6 +7,10 @@ class Demon{
     private ?int $id;
     private ?string $nome;
     private ?float $preco;
+    private ?string $fraqueza;
+    private ?string $resistencia;
+    private ?string $absorcao;
+    private ?string $nulificacao;
     private ?Arcana $arcana;
     private ?Tipos $tipos;
 
@@ -41,6 +45,50 @@ class Demon{
     public function setPreco(?float $preco): self
     {
         $this->preco = $preco;
+        return $this;
+    }
+
+    /* Get e Set da fraqueza */
+    public function getFraqueza(): ?string
+    {
+        return $this->fraqueza;
+    }
+    public function setFraqueza(?string $fraqueza): self
+    {
+        $this->fraqueza = $fraqueza;
+        return $this;
+    }
+
+    /* Get e Set resistencia */
+    public function getResistencia(): ?string
+    {
+        return $this->resistencia;
+    }
+    public function setResistencia(?string $resistencia): self
+    {
+        $this->resistencia = $resistencia;
+        return $this;
+    }
+
+    /* Get e Set da absorcao */
+    public function getAbsorcao(): ?string
+    {
+        return $this->absorcao;
+    }
+    public function setAbsorcao(?string $absorcao): self
+    {
+        $this->absorcao = $absorcao;
+        return $this;
+    }
+
+    /* Get e Set nulificacao */
+    public function getNulificacao(): ?string
+    {
+        return $this->nulificacao;
+    }
+    public function setNulificacao(?string $nulificacao): self
+    {
+        $this->nulificacao = $nulificacao;
         return $this;
     }
 

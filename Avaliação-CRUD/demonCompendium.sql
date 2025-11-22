@@ -58,6 +58,10 @@ CREATE TABLE demon
  id INT AUTO_INCREMENT NOT NULL,  
  nome VARCHAR(80) NOT NULL,
  preco FLOAT NOT NULL,
+ fraqueza VARCHAR(80) NOT NULL,
+ resistencia VARCHAR(80) NOT NULL,
+ absorcao VARCHAR(80) NOT NULL,
+ nulificacao VARCHAR(80) NOT NULL,
  id_arcana INT NOT NULL,  
  id_tipos INT NOT NULL,
  CONSTRAINT pk_demon PRIMARY KEY (id)
