@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__ . "/Arcana.php");
+include_once(__DIR__ . "/Racas.php");
 include_once(__DIR__ . "/Tipos.php");
 
 class Demon{
@@ -7,11 +8,8 @@ class Demon{
     private ?int $id;
     private ?string $nome;
     private ?float $preco;
-    private ?string $fraqueza;
-    private ?string $resistencia;
-    private ?string $absorcao;
-    private ?string $nulificacao;
     private ?Arcana $arcana;
+    private ?Racas $racas;
     private ?Tipos $tipos;
 
     //Getters e Setters
@@ -48,50 +46,6 @@ class Demon{
         return $this;
     }
 
-    /* Get e Set da fraqueza */
-    public function getFraqueza(): ?string
-    {
-        return $this->fraqueza;
-    }
-    public function setFraqueza(?string $fraqueza): self
-    {
-        $this->fraqueza = $fraqueza;
-        return $this;
-    }
-
-    /* Get e Set resistencia */
-    public function getResistencia(): ?string
-    {
-        return $this->resistencia;
-    }
-    public function setResistencia(?string $resistencia): self
-    {
-        $this->resistencia = $resistencia;
-        return $this;
-    }
-
-    /* Get e Set da absorcao */
-    public function getAbsorcao(): ?string
-    {
-        return $this->absorcao;
-    }
-    public function setAbsorcao(?string $absorcao): self
-    {
-        $this->absorcao = $absorcao;
-        return $this;
-    }
-
-    /* Get e Set nulificacao */
-    public function getNulificacao(): ?string
-    {
-        return $this->nulificacao;
-    }
-    public function setNulificacao(?string $nulificacao): self
-    {
-        $this->nulificacao = $nulificacao;
-        return $this;
-    }
-
     /* Get e Set da classe Arcana */
     public function getArcana(): ?Arcana
     {
@@ -100,6 +54,17 @@ class Demon{
     public function setArcana(?Arcana $arcana): self
     {
         $this->arcana = $arcana;
+        return $this;
+    }
+
+    /* Get e Set da raça*/
+    public function getRacas(): ?Racas
+    {
+        return $this->racas;
+    }
+    public function setRacas(?Racas $racas): self
+    {
+        $this->racas = $racas;
         return $this;
     }
 

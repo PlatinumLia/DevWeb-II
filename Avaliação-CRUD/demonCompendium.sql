@@ -51,6 +51,56 @@ INSERT INTO tipos (tipo) VALUES ('Physical'),
 ('Curse'),
 ('Múltiplo');
 
+CREATE TABLE racas
+( 
+ id INT AUTO_INCREMENT NOT NULL,  
+ nome VARCHAR(80) NOT NULL,
+ CONSTRAINT pk_racas PRIMARY KEY (id)
+); 
+
+INSERT INTO racas (nome) VALUES
+('Akuma'),
+('Amatsu'),
+('Avatar'),
+('Avian'),
+('Beast'),
+('Brute'),
+('Chaos'),
+('Deity'),
+('Devil'),
+('Dragon'),
+('Drake'),
+('Element'),
+('Enigma'),
+('Entity'),
+('Fairy'),
+('Fallen'),
+('Famed'),
+('Femme'),
+('Flight'),
+('Fury'),
+('General'),
+('Haunt'),
+('Holy'),
+('Kaijuu'),
+('Lady'),
+('Machine'),
+('Megami'),
+('Mitama'),
+('Night'),
+('Primal'),
+('Raptor'),
+('Reaper'),
+('Snake'),
+('Spirit'),
+('Tenma'),
+('Tyrant'),
+('UMA'),
+('Vermin'),
+('Vile'),
+('Wargod'),
+('Yoma'),
+('Zealot');
 
 /* Tabela dos demônios e alterações de chaves estrangeiras*/
 CREATE TABLE demon 
@@ -58,14 +108,12 @@ CREATE TABLE demon
  id INT AUTO_INCREMENT NOT NULL,  
  nome VARCHAR(80) NOT NULL,
  preco FLOAT NOT NULL,
- fraqueza VARCHAR(80) NOT NULL,
- resistencia VARCHAR(80) NOT NULL,
- absorcao VARCHAR(80) NOT NULL,
- nulificacao VARCHAR(80) NOT NULL,
  id_arcana INT NOT NULL,  
  id_tipos INT NOT NULL,
+ id_racas INT NOT NULL,
  CONSTRAINT pk_demon PRIMARY KEY (id)
 );
 
 ALTER TABLE demon ADD CONSTRAINT fk_arcana FOREIGN KEY (id_arcana) REFERENCES arcana (id);
 ALTER TABLE demon ADD CONSTRAINT fk_tipos FOREIGN KEY (id_tipos) REFERENCES tipos (id);
+ALTER TABLE demon ADD CONSTRAINT fk_racas FOREIGN KEY (id_racas) REFERENCES racas (id);

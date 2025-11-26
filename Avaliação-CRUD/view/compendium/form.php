@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__ . "/../../controller/ArcanaController.php");
+include_once(__DIR__ . "/../../controller/RacasController.php");
 include_once(__DIR__ . "/../../controller/TiposController.php");
 include_once(__DIR__ . "/../../util/config.php");
 
@@ -8,6 +9,9 @@ $arcanas = $arcCont->listar();
 
 $tiposCont = new TiposController();
 $tipos = $tiposCont->listar();
+
+$racasCont = new RacasController();
+$racas = $racasCont->listar();
 //print_r($tipos);
 ?>
 
@@ -38,6 +42,20 @@ $tipos = $tiposCont->listar();
 
             </select>
         </div>
+
+        <div>
+            <label for="">Raça</label>
+            <select name="raca" id="">
+                <option value="">---- SELECIONE ----</option>
+
+                <?php foreach ($racas as $r) : ?>
+                    <option value="<?= $r->getId(); ?>">
+                        <?= $r->getNome() ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
         <div>
             <label for="">Fraqueza</label>
             <select name="fraqueza" id="">
@@ -53,49 +71,7 @@ $tipos = $tiposCont->listar();
         </div>
 
         <div>
-            <label for="">Resistência</label>
-            <select name="resistencia" id="">
-                <option value="">---- SELECIONE ----</option>
-
-                <?php foreach ($tipos as $t) : ?>
-                    <option value="<?= $t->getId(); ?>">
-                        <?= $t->getTipo() ?>
-                    </option>
-                <?php endforeach; ?>
-
-            </select>
-        </div>
-
-        <div>
-            <label for="">Absorção</label>
-            <select name="absorcao" id="">
-                <option value="">---- SELECIONE ----</option>
-
-                <?php foreach ($tipos as $t) : ?>
-                    <option value="<?= $t->getId(); ?>">
-                        <?= $t->getTipo() ?>
-                    </option>
-                <?php endforeach; ?>
-
-            </select>
-        </div>
-
-        <div>
-            <label for="">Nulificação</label>
-            <select name="nulificacao" id="">
-                <option value="">---- SELECIONE ----</option>
-
-                <?php foreach ($tipos as $t) : ?>
-                    <option value="<?= $t->getId(); ?>">
-                        <?= $t->getTipo() ?>
-                    </option>
-                <?php endforeach; ?>
-
-            </select>
-        </div>
-
-        <div>
-            <a href="#">Gravar</a>
+            <button type="submit">Gravar</button>
             <a href="#">Voltar</a>
         </div>
     </form>

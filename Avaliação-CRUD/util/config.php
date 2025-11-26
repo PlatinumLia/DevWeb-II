@@ -11,5 +11,5 @@ define("DB_USER", "root");
 define("DB_PASSWORD", "bancodedados"); //a senha muda dependendo do dispositivo que você usa para desenvolver a aplicação web 
 
 //configurar a URL do sistema
-define("URL_BASE", "/Lia - 2ºTADS/DevWebII/Avaliação - CRUD");
+//define("URL_BASE", "/Lia - 2ºTADS/DevWebII/Avaliação - CRUD");
 ?>
