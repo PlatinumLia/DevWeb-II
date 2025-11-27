@@ -7,29 +7,31 @@ CREATE TABLE arcana
  CONSTRAINT pk_arcana PRIMARY KEY (id) 
 );
 
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Fool', 0);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Magician', 1);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Priestess', 2);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Empress', 3);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Emperor', 4);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Hierophant', 5);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Lovers', 6);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Chariot', 7);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Justice', 8);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Hermit', 9);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Fortune', 10);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Strength', 11);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Hanged Man', 12);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Death', 13);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Temperance', 14);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Devil', 15);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Tower', 16);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Star', 17);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Moon', 18);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Sun', 19);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Judgement', 20);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('World', 21);
-INSERT INTO arcana (nome, numero_arcana) VALUES ('Universe', 21);
+INSERT INTO arcana (nome, numero_arcana) VALUES
+('Nenhuma', 0),
+('Fool', 0),
+('Magician', 1),
+('Priestess', 2),
+('Empress', 3),
+('Emperor', 4),
+('Hierophant', 5),
+('Lovers', 6),
+('Chariot', 7),
+('Justice', 8),
+('Hermit', 9),
+('Fortune', 10),
+('Strength', 11),
+('Hanged Man', 12),
+('Death', 13),
+('Temperance', 14),
+('Devil', 15),
+('Tower', 16),
+('Star', 17),
+('Moon', 18),
+('Sun', 19),
+('Judgement', 20),
+('World', 21),
+('Universe', 21);
 
 /* Tabela e Insert's dos tipos elementais */
 CREATE TABLE tipos 
@@ -39,7 +41,9 @@ CREATE TABLE tipos
  CONSTRAINT pk_tipos PRIMARY KEY (id)  
 );
 
-INSERT INTO tipos (tipo) VALUES ('Physical'),
+INSERT INTO tipos (tipo) VALUES 
+('Nenhuma'),
+('Physical'),
 ('Gun'),
 ('Fire'),
 ('Ice'),
@@ -59,6 +63,7 @@ CREATE TABLE racas
 ); 
 
 INSERT INTO racas (nome) VALUES
+('Nenhuma'),
 ('Akuma'),
 ('Amatsu'),
 ('Avatar'),

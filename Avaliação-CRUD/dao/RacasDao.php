@@ -1,4 +1,5 @@
 <?php
+include_once(__DIR__ . "/../util/Connection.php");
 include_once(__DIR__ . "/../model/Racas.php");
 
 class RacasDao{

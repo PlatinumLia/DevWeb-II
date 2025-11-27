@@ -12,7 +12,7 @@ class DemonDao{
     //métodos
     //listar:
     public function list(){
-        $sql = "SELECT d.*, arc.nome arcana, t.tipo tipo, r.nome raca 
+        $sql = "SELECT d.*, arc.nome arcana, t.tipo fraqueza, r.nome raca 
                 FROM demon a
                 JOIN arcana arc ON (arc.id = d.id_arcana)
                 JOIN tipos t ON (t.id = d.id_arcana)
@@ -50,7 +50,6 @@ class DemonDao{
             $raca->setNome($r['nome']);
             $demon->setRacas($raca);
 
-
             array_push($demons, $demon);
         }
 
@@ -64,9 +63,9 @@ class DemonDao{
             VALUES (?, ?, ?, ?, ?)";
 
             $stm = $this->conn->prepare($sql);
-            $stm->execute(array($demon->getNome(), 
-                                $demon->getPreco(), 
-                                $demon->getArcana()->getCarta(),
+            $stm->execute(array($demon->getNome(),
+                                $demon->getPreco(),
+                                $demon->getArcana(),
                                 $demon->getTipos(),
                                 $demon->getRacas()));
         }catch(PDOException $e){

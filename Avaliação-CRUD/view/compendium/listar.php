@@ -25,16 +25,16 @@ print_r($demons);
     </tr>
 
     <!-- Dados -->
-     <?php foreach($demons as $d): ?>
+    <?php foreach ($demons as $d) : ?>
         <tr>
             <td> <?= $d->getId() ?> </td>
             <td> <?= $d->getNome() ?> </td>
             <td> <?= $d->getPreco() ?> </td>
             <td> <?= $d->getArcana()->getCarta() ?> </td>
             <td> <?= $d->getRacas() ?> </td>
-            <td> <?= $d->getTipos() ?> </td>
-            <td>  </td>
-            <td>  </td>
+            <td> <?= $d->getTipo() ?> </td>
+            <td> </td>
+            <td> </td>
         </tr>
-     <?php endforeach; ?>
+    <?php endforeach; ?>
 </table>

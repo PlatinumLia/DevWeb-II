@@ -1,7 +1,7 @@
 <?php
 include_once(__DIR__ . "/../../model/Demon.php");
 include_once(__DIR__ . "/../../controller/DemonController.php");
-include_once(__DIR__ . "/../../service/DemonService.php");
+//include_once(__DIR__ . "/../../service/DemonService.php");
 
 $msgErro = "";
 $demon = NULL;

@@ -12,7 +12,7 @@ $tipos = $tiposCont->listar();
 
 $racasCont = new RacasController();
 $racas = $racasCont->listar();
-//print_r($tipos);
+//print_r($racas);
 ?>
 
 <h3>Demônio</h3>
@@ -72,8 +72,18 @@ $racas = $racasCont->listar();
 
         <div>
             <button type="submit">Gravar</button>
-            <a href="#">Voltar</a>
         </div>
     </form>
+    
+    <div>
+        <?php if($msgErro): ?>
+            <div>
+                <?= $msgErro ?>
+            </div>
+        <?php endif; ?>
+    </div>
 
+    <div>
+        <a href="listar.php">Voltar</a>
+    </div>    
 </div>
