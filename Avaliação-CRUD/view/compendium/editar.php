@@ -7,10 +7,12 @@ include_once(__DIR__ . "/../../model/Demon.php");
 include_once(__DIR__ . "/../../controller/DemonController.php");
 //include_once(__DIR__ . "/../../service/DemonService.php");
 
+$demonCont = new DemonController();
 $msgErro = "";
 $demon = NULL;
 
 if(isset($_POST['nome'])){ //verificando se foi clicado em "gravar"
+    $id = $_POST['id']
     $nome = trim($_POST['nome']) ? trim($_POST['nome']) : NULL;
     $preco = is_numeric($_POST['preco']) ? $_POST['preco'] : NULL;
     $idArcana = is_numeric($_POST['arcana']) ? $_POST['arcana'] : NULL;
@@ -19,7 +21,7 @@ if(isset($_POST['nome'])){ //verificando se foi clicado em "gravar"
 
     //criando objeto "Demon" para salvar os dados
     $demon = new Demon();
-    $demon->setId(0);
+    $demon->setId($id);
     $demon->setNome($nome);
     $demon->setPreco($preco);
 
@@ -48,13 +50,25 @@ if(isset($_POST['nome'])){ //verificando se foi clicado em "gravar"
         $demon->setTipos(NULL);
     }
 
-    $demonCont = new DemonController();
-    $erros = $demonCont->inserir($demon);
-
+    $erros = $demonCont->editar($demon);
+    
     if(!$erros){
         header("location:listar.php");
     }else{
         $msgErro = implode("<br>" . $erros);
+    }
+}else{
+    $id = 0;
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
+
+    $demon = $demonCont->buscarPorID($id);
+    if(!$demon){ //tratamento
+        echo "Demônio não encontrado. <br>";
+        echo "<a href='listar.php'>Voltar</a>";
+
+        exit;
     }
 }
 

@@ -12,8 +12,8 @@ class DemonDao{
     //métodos
     //listar:
     public function list(){
-        $sql = "SELECT d.*, arc.nome arcana, t.tipo fraqueza, r.nome raca 
-                FROM demon a
+        $sql = "SELECT d.*, arc.nome, t.tipo , r.nome 
+                FROM demon d
                 JOIN arcana arc ON (arc.id = d.id_arcana)
                 JOIN tipos t ON (t.id = d.id_arcana)
                 JOIN racas r ON (r.id = d.id_arcana)";
@@ -42,7 +42,7 @@ class DemonDao{
 
             $tipo = new Tipos();
             $tipo->setId($r['id']);
-            $tipo->setTipo($r['tipos']);
+            $tipo->setTipo($r['tipo']);
             $demon->setTipos($tipo);
 
             $raca = new Racas();
@@ -65,9 +65,54 @@ class DemonDao{
             $stm = $this->conn->prepare($sql);
             $stm->execute(array($demon->getNome(),
                                 $demon->getPreco(),
-                                $demon->getArcana(),
-                                $demon->getTipos(),
-                                $demon->getRacas()));
+                                $demon->getArcana()->getId(),
+                                $demon->getTipos()->getId(),
+                                $demon->getRacas()->getId()));
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function findById(int $id){
+        $sql = "SELECT d.*, arc.nome, t.tipo , r.nome 
+                FROM demon d
+                JOIN arcana arc ON (arc.id = d.id_arcana)
+                JOIN tipos t ON (t.id = d.id_arcana)
+                JOIN racas r ON (r.id = d.id_arcana)";
+
+        $stm = $this->conn->prepare($sql);
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $demons = $this->map($result);
+        if(count($demons) == 1){
+            return $demons[0];
+        }
+        return NULL;
+    }
+
+    public function update(Demon $demon){
+        try{
+            $sql = "UPDATE demon 
+                    SET nome = ?, preco = ?, id_arcana = ?, id_tipos = ?, id_raca = ?
+                    WHERE id = ?";
+            $stm = $this->conn->prepare($sql);
+            $stm->execute(array(
+                            $demon->getNome(),
+                            $demon->getPreco(),
+                            $demon->getArcana()->getId(),
+                            $demon->getTipos()->getId(),
+                            $demon->getRacas()->getId()));
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function exclude(int $id){
+        try{
+            $sql = "DELETE FROM demon WHERE id=?";
+            $stm = $this->conn->prepare($sql);
+            $stm->execute(array($id));
         }catch(PDOException $e){
             die($e->getMessage());
         }

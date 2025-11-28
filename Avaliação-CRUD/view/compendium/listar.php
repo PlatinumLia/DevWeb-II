@@ -1,15 +1,21 @@
 <?php
+//Mostrar erros do PHP
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 include_once(__DIR__ . "/../../controller/DemonController.php");
 $demonCont = new DemonController();
 $demons = $demonCont->listar();
+//print_r($demons);
 
-print_r($demons);
+include_once(__DIR__ . "/../include/header.php");
+//include_once(__DIR__ . "/../include/menu.php");
 ?>
 
 <h3>Demon Compendium</h3>
 
 <div>
-    <a href="form.php">Inserir</a>
+    <a href="inserir.php">Inserir</a>
 </div>
 
 <table>
@@ -32,9 +38,21 @@ print_r($demons);
             <td> <?= $d->getPreco() ?> </td>
             <td> <?= $d->getArcana()->getCarta() ?> </td>
             <td> <?= $d->getRacas() ?> </td>
-            <td> <?= $d->getTipo() ?> </td>
-            <td> </td>
-            <td> </td>
+            <td> <?= $d->getTipos() ?> </td>
+            <td> 
+                <a href="editar.php?id=<? $d->getId() ?>">
+                    <img src="/../../img/btn_editar.png">
+                </a>
+            </td>
+            <td>
+                <a href="excluir.php?id=<? $d->getId() ?>">
+                    <img src="/../../img/btn_excluir.png">
+                </a>
+            </td>
         </tr>
     <?php endforeach; ?>
 </table>
+
+<?php
+include_once(__DIR__ . "/../include/footer.php");
+?>

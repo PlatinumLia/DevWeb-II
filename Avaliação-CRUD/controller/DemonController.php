@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . "/../dao/DemonDao");
+include_once(__DIR__ . "/../dao/DemonDao.php");
 include_once(__DIR__ . "/../service/DemonService.php");
 
 class DemonController{
@@ -17,6 +17,10 @@ class DemonController{
         return $this->demonDao->list();
     }
 
+    public function buscarPorID(int $id){
+        return $this->demonDao->findById($id);
+    }
+
     //inserir
     public function inserir(Demon $demon){
         $erros = $this->demonService->validar($demon); //verificando se há erros
@@ -26,6 +30,20 @@ class DemonController{
         }
 
         return $erros;
+    }
+
+    public function editar(Demon $demon){
+        $erros = $this->demonService->validar($demon);
+
+        if(!$erros){
+            $this->demonDao->update($demon);
+        }
+
+        return $erros;
+    }
+
+    public function excluir(int $id){
+        $this->demonDao->exclude($id);
     }
 }
 ?>

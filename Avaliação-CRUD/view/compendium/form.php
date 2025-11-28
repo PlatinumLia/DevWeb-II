@@ -1,4 +1,8 @@
 <?php
+//Mostrar erros do PHP
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 include_once(__DIR__ . "/../../controller/ArcanaController.php");
 include_once(__DIR__ . "/../../controller/RacasController.php");
 include_once(__DIR__ . "/../../controller/TiposController.php");
@@ -13,12 +17,14 @@ $tipos = $tiposCont->listar();
 $racasCont = new RacasController();
 $racas = $racasCont->listar();
 //print_r($racas);
+
+include_once(__DIR__ . "/../include/header.php");
 ?>
 
 <h3>Demônio</h3>
 
 <div>
-    <form action="POST" action="">
+    <form method="POST" action="">
         <div>
             <label for="">Nome</label>
             <input type="text" name="nome" placeholder="Nome do demônio">
@@ -26,7 +32,7 @@ $racas = $racasCont->listar();
 
         <div>
             <label for="">Preco</label>
-            <input type="text" name="preco" placeholder="Preço do demônio">
+            <input type="number" name="preco" placeholder="Preço do demônio">
         </div>
 
         <div>
