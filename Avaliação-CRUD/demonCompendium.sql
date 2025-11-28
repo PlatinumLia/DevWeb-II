@@ -112,7 +112,7 @@ CREATE TABLE demon
 (
  id INT AUTO_INCREMENT NOT NULL,  
  nome VARCHAR(80) NOT NULL,
- preco FLOAT NOT NULL,
+ preco INT NOT NULL,
  id_arcana INT NOT NULL,  
  id_tipos INT NOT NULL,
  id_racas INT NOT NULL,
