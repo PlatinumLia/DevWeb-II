@@ -12,11 +12,14 @@ class DemonDao{
     //métodos
     //listar:
     public function list(){
-        $sql = "SELECT d.*, arc.nome, t.tipo , r.nome 
+        $sql = "SELECT d.*, 
+                       arc.id id_arcana, arc.nome arcana, arc.numero_arcana num_arcana, 
+                       t.id id_fraqueza, t.tipo fraqueza, 
+                       r.id id_raca, r.nome raca
                 FROM demon d
                 JOIN arcana arc ON (arc.id = d.id_arcana)
-                JOIN tipos t ON (t.id = d.id_arcana)
-                JOIN racas r ON (r.id = d.id_arcana)";
+                JOIN tipos t ON (t.id = d.id_tipos)
+                JOIN racas r ON (r.id = d.id_racas)";
 
         $stm = $this->conn->prepare($sql);
         $stm->execute();
@@ -35,19 +38,19 @@ class DemonDao{
             $demon->setPreco($r['preco']);
 
             $arcana = new Arcana();
-            $arcana->setId($r['id']);
-            $arcana->setNomeArc($r['nome']);
-            $arcana->setNumArcana($r['numero_arcana']);
+            $arcana->setId($r['id_arcana']);
+            $arcana->setNomeArc($r['arcana']);
+            $arcana->setNumArcana($r['num_arcana']);
             $demon->setArcana($arcana);
 
             $tipo = new Tipos();
-            $tipo->setId($r['id']);
-            $tipo->setTipo($r['tipo']);
+            $tipo->setId($r['id_fraqueza']);
+            $tipo->setTipo($r['fraqueza']);
             $demon->setTipos($tipo);
 
             $raca = new Racas();
-            $raca->setId($r['id']);
-            $raca->setNome($r['nome']);
+            $raca->setId($r['id_raca']);
+            $raca->setNome($r['raca']);
             $demon->setRacas($raca);
 
             array_push($demons, $demon);
@@ -74,11 +77,15 @@ class DemonDao{
     }
 
     public function findById(int $id){
-        $sql = "SELECT d.*, arc.nome, t.tipo , r.nome 
+        $sql = "SELECT d.*, 
+                       arc.id id_arcana, arc.nome arcana, arc.numero_arcana num_arcana, 
+                       t.id id_fraqueza, t.tipo fraqueza, 
+                       r.id id_raca, r.nome raca
                 FROM demon d
                 JOIN arcana arc ON (arc.id = d.id_arcana)
-                JOIN tipos t ON (t.id = d.id_arcana)
-                JOIN racas r ON (r.id = d.id_arcana)";
+                JOIN tipos t ON (t.id = d.id_tipos)
+                JOIN racas r ON (r.id = d.id_racas)
+                WHERE d.id = ?";
 
         $stm = $this->conn->prepare($sql);
         $stm->execute([$id]);
@@ -94,7 +101,7 @@ class DemonDao{
     public function update(Demon $demon){
         try{
             $sql = "UPDATE demon 
-                    SET nome = ?, preco = ?, id_arcana = ?, id_tipos = ?, id_raca = ?
+                    SET nome = ?, preco = ?, id_arcana = ?, id_tipos = ?, id_racas = ?
                     WHERE id = ?";
             $stm = $this->conn->prepare($sql);
             $stm->execute(array(
@@ -102,7 +109,8 @@ class DemonDao{
                             $demon->getPreco(),
                             $demon->getArcana()->getId(),
                             $demon->getTipos()->getId(),
-                            $demon->getRacas()->getId()));
+                            $demon->getRacas()->getId(),
+                            $demon->getId()));
         }catch(PDOException $e){
             die($e->getMessage());
         }

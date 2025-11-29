@@ -5,14 +5,13 @@ error_reporting(E_ALL);
 
 include_once(__DIR__ . "/../../model/Demon.php");
 include_once(__DIR__ . "/../../controller/DemonController.php");
-//include_once(__DIR__ . "/../../service/DemonService.php");
 
 $demonCont = new DemonController();
 $msgErro = "";
 $demon = NULL;
 
 if(isset($_POST['nome'])){ //verificando se foi clicado em "gravar"
-    $id = $_POST['id']
+    $id = $_POST['id'];
     $nome = trim($_POST['nome']) ? trim($_POST['nome']) : NULL;
     $preco = is_numeric($_POST['preco']) ? $_POST['preco'] : NULL;
     $idArcana = is_numeric($_POST['arcana']) ? $_POST['arcana'] : NULL;
@@ -55,11 +54,11 @@ if(isset($_POST['nome'])){ //verificando se foi clicado em "gravar"
     if(!$erros){
         header("location:listar.php");
     }else{
-        $msgErro = implode("<br>" . $erros);
+        $msgErro = implode("<br>", $erros);
     }
 }else{
     $id = 0;
-    if(isset($_GET['id'])){
+    if(isset($_GET['id'])){ //verifica se há o id
         $id = $_GET['id'];
     }
 
@@ -68,11 +67,11 @@ if(isset($_POST['nome'])){ //verificando se foi clicado em "gravar"
         echo "Demônio não encontrado. <br>";
         echo "<a href='listar.php'>Voltar</a>";
 
-        exit;
+        exit; //para a requisição
     }
 }
 
-print_r($demon);
+//print_r($demon);
 
 include_once(__DIR__ . "/form.php");
 ?>
