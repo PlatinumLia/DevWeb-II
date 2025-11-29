@@ -54,11 +54,11 @@ if(isset($_POST['nome'])){ //verificando se foi clicado em "gravar"
     if(!$erros){
         header("location:listar.php");
     }else{
-        $msgErro = implode("<br>" . $erros);
+        $msgErro = implode("<br>", $erros);
     }
 }
 
-print_r($demon);
+//print_r($demon);
 
 include_once(__DIR__ . "/form.php");
 ?>

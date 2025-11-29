@@ -7,7 +7,7 @@ class Arcana{
 
     //métodos
     public function getCarta(){ //concatena o nome e nº da arcana
-        return $this->nomeArc . " - " . $this->numArcana;
+        return $this->nomeArc . " - " . "Nº: ". $this->numArcana;
     }
 
     //Getters e Setters

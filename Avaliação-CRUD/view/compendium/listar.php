@@ -9,50 +9,51 @@ $demons = $demonCont->listar();
 //print_r($demons);
 
 include_once(__DIR__ . "/../include/header.php");
-//include_once(__DIR__ . "/../include/menu.php");
+include_once(__DIR__ . "/../include/menu.php");
 ?>
 
-<h3>Demon Compendium</h3>
+<div class="container">
+    <h3>Demon Compendium</h3>
 
-<div>
-    <a href="inserir.php">Inserir</a>
-</div>
+    <div>
+        <a href="inserir.php">Inserir</a>
+    </div>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Preço</th>
-        <th>Raça</th>
-        <th>Arcana</th>
-        <th>Fraqueza</th>
-        <th>Editar</th>
-        <th>Excluir</th>
-    </tr>
-
-    <!-- Dados -->
-    <?php foreach ($demons as $d) : ?>
+    <table class="table-bordered table-striped">
         <tr>
-            <td> <?= $d->getId() ?> </td>
-            <td> <?= $d->getNome() ?> </td>
-            <td> <?= $d->getPreco() ?> </td>
-            <td> <?= $d->getArcana()->getCarta() ?> </td>
-            <td> <?= $d->getRacas() ?> </td>
-            <td> <?= $d->getTipos() ?> </td>
-            <td> 
-                <a href="editar.php?id=<? $d->getId() ?>">
-                    <img src="/../../img/btn_editar.png">
-                </a>
-            </td>
-            <td>
-                <a href="excluir.php?id=<? $d->getId() ?>">
-                    <img src="/../../img/btn_excluir.png">
-                </a>
-            </td>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Raça</th>
+            <th>Arcana</th>
+            <th>Fraqueza</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
-    <?php endforeach; ?>
-</table>
 
-<?php
-include_once(__DIR__ . "/../include/footer.php");
-?>
+        <!-- Dados -->
+        <?php foreach ($demons as $d) : ?>
+            <tr>
+                <td> <?= $d->getId() ?> </td>
+                <td> <?= $d->getNome() ?> </td>
+                <td> <?= $d->getPreco() ?> </td>
+                <td> <?= $d->getRacas()->getNome() ?> </td>
+                <td> <?= $d->getArcana()->getCarta() ?> </td>
+                <td> <?= $d->getTipos()->encurtaTipo() ?> </td>
+                <td>
+                    <a href="editar.php?id=<?= $d->getId() ?>">
+                        <img src="./../../img/btn_editar.png">
+                    </a>
+                </td>
+                <td>
+                    <a href="excluir.php?id=<?= $d->getId() ?>">
+                        <img src="./../../img//btn_excluir.png">
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+    <?php
+    include_once(__DIR__ . "/../include/footer.php");
+    ?>

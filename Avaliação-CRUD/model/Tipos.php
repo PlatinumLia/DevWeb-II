@@ -5,33 +5,19 @@ class Tipos{
     private ?string $tipo;
 
     //métodos
-    public function encurtaTipo(){ //encurtar alguns tipos elementais
-        if($this->tipo == 'Physical'){
-            return "Phys";
-        }
-
-        if($this->tipo == 'Electricity' ){
-            return "Elec";
-        }
-
-        if($this->tipo == 'Psychokinesis'){
-            return "Psy";
-        }
-    }
-
-    public function verificaMultiplo(){ //verifica qual o tipo de múltiplo está sendo escolhido
-        if($this->tipo == 'Múltiplo'){
-            return "M. Weak";
-        }
-        if($this->tipo == 'Múltiplo'){
-            return "M. Res";
-        }
-        if($this->tipo == 'Múltiplo'){
-            return "M. Abs";
-        }
-        if($this->tipo == 'Múltiplo'){
-            return "M. Null";
-        }
+    public function encurtaTipo(){ //mostra os tipos elementais que o demônio é fraco
+        if($this->tipo == 'Nenhuma'){ return "Nenhuma"; }
+        if($this->tipo == 'Physical'){ return "Phys"; }
+        if($this->tipo == 'Gun'){ return "Gun"; }
+        if($this->tipo == 'Fire'){ return "Fire"; }
+        if($this->tipo == 'Ice'){ return "Ice"; }
+        if($this->tipo == 'Electricity'){ return "Elec"; }
+        if($this->tipo == 'Wind'){ return "Wind"; }
+        if($this->tipo == 'Psychokinesis'){ return "Psy"; }
+        if($this->tipo == 'Nuke'){ return "Nuke"; }
+        if($this->tipo == 'Bless'){ return "Bless"; }
+        if($this->tipo == 'Curse'){ return "Curse"; }
+        if($this->tipo == 'Múltiplo'){ return "M. Weak"; }
     }
 
     //Getters e Setters
