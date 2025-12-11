@@ -18,4 +18,11 @@ $app->addErrorMiddleware(true, true, true); //Retorna um erro do Framework caso 
 
 //rotas:
 $app->get('/demons', DemonController::class . ":listar");
+
+//trantando rotas não encontradas
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
+    throw new HttpNotFoundException($request);
+});
+
+$app->run();
 ?>
